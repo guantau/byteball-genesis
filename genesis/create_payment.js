@@ -45,7 +45,7 @@ function createPayment() {
 }
 
 eventBus.on('headless_wallet_ready', function() {
-	console.log("> Create paymeng");
+	console.log("> Create payment");
     loadWalletConfig(function() {
 		setInterval(createPayment, 1000*30);
 	});
