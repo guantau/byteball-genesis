@@ -1,0 +1,18 @@
+{
+  "name": "wallet-paying",
+  "version": "1.0.0",
+  "description": "Setup from genesis unit",
+  "main": "start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "guantau",
+  "license": "MIT",
+  "browser": {
+    "request": "browser-request",
+    "secp256k1": "secp256k1/js"
+  },
+  "dependencies": {
+    "headless-byteball": "git+https://github.com:byteball/headless-byteball.git"
+  }
+}
