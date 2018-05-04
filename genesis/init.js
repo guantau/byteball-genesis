@@ -1,12 +1,12 @@
 /*jslint node: true */
 "use strict";
 
-var fs = require('fs');
-var crypto = require('crypto');
-var Mnemonic = require('bitcore-mnemonic');
-var Bitcore = require('bitcore-lib');
-var objectHash = require('byteballcore/object_hash');
-var constants = require('byteballcore/constants');
+let fs = require('fs');
+let crypto = require('crypto');
+let Mnemonic = require('bitcore-mnemonic');
+let Bitcore = require('bitcore-lib');
+let objectHash = require('byteballcore/object_hash');
+let constants = require('byteballcore/constants');
 
 
 // create 4 types of config files in configPath
@@ -14,8 +14,8 @@ var constants = require('byteballcore/constants');
 // genesis: wallet-genesis, genesis-config.json
 // paying:  wallet-paying, paying-config.json
 // payee:   wallet-payee, payee-config.json
-var witnessConfigArray = [];
-var witnessAddressArray = [];
+let witnessConfigArray = [];
+let witnessAddressArray = [];
 const configPath = "../wallets/";
 
 
@@ -27,7 +27,7 @@ function onError(err) {
 
 
 function derivePubkey(xPubKey, path) {
-	var hdPubKey = new Bitcore.HDPublicKey(xPubKey);
+	let hdPubKey = new Bitcore.HDPublicKey(xPubKey);
 	return hdPubKey.derive(path).publicKey.toBuffer().toString("base64");
 }
 
@@ -47,20 +47,20 @@ wallet example:
     "creation_date": "2017-10-25 02:17:31"
 **/
 function createWallet() {
-	var deviceTempPrivKey = crypto.randomBytes(32);
-	var devicePrevTempPrivKey = crypto.randomBytes(32);
-	var passphrase = "";
-	var mnemonic = new Mnemonic(); // generates new mnemonic
+	let deviceTempPrivKey = crypto.randomBytes(32);
+	let devicePrevTempPrivKey = crypto.randomBytes(32);
+	let passphrase = "";
+	let mnemonic = new Mnemonic(); // generates new mnemonic
 	while (!Mnemonic.isValid(mnemonic.toString()))
 		mnemonic = new Mnemonic();
-	var xPrivKey = mnemonic.toHDPrivateKey(passphrase);
-	var strXPubKey = Bitcore.HDPublicKey(xPrivKey.derive("m/44'/0'/0'")).toString();
-	var pubkey = derivePubkey(strXPubKey, "m/"+0+"/"+0);
-	var arrDefinition = ['sig', {pubkey: pubkey}];
-	var address = objectHash.getChash160(arrDefinition);
-	var wallet = crypto.createHash("sha256").update(strXPubKey, "utf8").digest("base64");
+	let xPrivKey = mnemonic.toHDPrivateKey(passphrase);
+	let strXPubKey = Bitcore.HDPublicKey(xPrivKey.derive("m/44'/0'/0'")).toString();
+	let pubkey = derivePubkey(strXPubKey, "m/"+0+"/"+0);
+	let arrDefinition = ['sig', {pubkey: pubkey}];
+	let address = objectHash.getChash160(arrDefinition);
+	let wallet = crypto.createHash("sha256").update(strXPubKey, "utf8").digest("base64");
 
-	var obj = {};
+	let obj = {};
 	obj['passphrase'] = passphrase;
     obj['mnemonic_phrase'] = mnemonic.phrase;
     obj['temp_priv_key'] = deviceTempPrivKey.toString('base64');
@@ -79,26 +79,26 @@ function createWallet() {
 // create config files for wallet
 function createConfig(deviceName, isWitness) {
 	// create the wallet
-	var wallet = createWallet();
+	let wallet = createWallet();
 	if (isWitness) {
 		witnessConfigArray.push(wallet);
 	}
 
 	// create directory
-	var dir = configPath+deviceName;
+	let dir = configPath+deviceName;
 	if (!fs.existsSync(dir)) {
 		fs.mkdirSync(dir);
 	}
 
 	// write keys
-	var keys = {};
+	let keys = {};
 	keys['mnemonic_phrase'] = wallet['mnemonic_phrase'];
 	keys['temp_priv_key'] = wallet['temp_priv_key'];
 	keys['prev_temp_priv_key'] = wallet['prev_temp_priv_key'];
 	fs.writeFile(dir+"/keys.json", JSON.stringify(keys, null, '\t'), 'utf8', onError);
 
 	// write devicename
-	var cfg = {};
+	let cfg = {};
 	cfg['deviceName'] = deviceName;
 	fs.writeFile(dir+"/conf.json", JSON.stringify(cfg, null, '\t'), 'utf8', onError);
 
@@ -108,16 +108,16 @@ function createConfig(deviceName, isWitness) {
 // create config files for witnesses
 console.log("> Create wallets for witness...");
 for (let i = 0; i < constants.COUNT_WITNESSES; i++) {
-	wallet = createConfig("wallet-witness"+(i+1), 1);
+	let wallet = createConfig("wallet-witness"+(i+1), 1);
 	witnessAddressArray.push(wallet['address']);
 }
 fs.writeFile(configPath+"witness-config.json", JSON.stringify(witnessConfigArray, null, '\t'), 'utf8', onError);
 fs.writeFile(configPath+"witness-address.json", JSON.stringify(witnessAddressArray.sort(), null, '\t'), 'utf8', onError);
 console.log(witnessAddressArray.sort());
 
-// create config files for change address
-console.log("> Create wallets for change...");
-var wallet = createConfig("wallet-genesis", 0);
+// create config files for genesis address
+console.log("> Create wallets for genesis...");
+let wallet = createConfig("wallet-genesis", 0);
 fs.writeFile(configPath+"genesis-config.json", JSON.stringify(wallet, null, '\t'), 'utf8', onError);
 
 // create config files for paying address

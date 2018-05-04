@@ -1,9 +1,13 @@
 {
   "name": "wallet-paying",
   "version": "1.0.0",
-  "description": "Setup from genesis unit",
+  "description": "Setup byteball from genesis unit",
   "main": "start.js",
   "scripts": {
+    "init": "node init.js",
+    "genesis": "node genesis.js",
+    "blackbytes": "node blackbytes.js",
+    "payment": "node payment.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "guantau",
@@ -13,6 +17,7 @@
     "secp256k1": "secp256k1/js"
   },
   "dependencies": {
-    "headless-byteball": "git+https://github.com:byteball/headless-byteball.git"
+    "byteballcore": "git+https://github.com/byteball/byteballcore.git",
+    "headless-byteball": "git+https://github.com/byteball/headless-byteball.git"
   }
 }

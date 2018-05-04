@@ -1,0 +1,31 @@
+{
+  "name": "byteball-genesis",
+  "version": "1.0.0",
+  "description": "Setup byteball network from scratch",
+  "main": "index.js",
+  "dependencies": {
+    "wallet-genesis": "file:genesis"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "init": "npm --prefix genesis run init",
+    "genesis": "bin/wallet.sh; npm --prefix genesis run genesis",
+    "blackbytes": "bin/constant.sh; npm --prefix genesis run blackbytes",
+    "payment": "npm --prefix genesis run payment",
+    "deploy": "bin/deploy.sh",
+    "start": "bin/start.sh",
+    "clean": "bin/clean.sh",
+    "reset": "bin/reset.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guantau/byteball-genesis.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/guantau/byteball-genesis/issues"
+  },
+  "homepage": "https://github.com/guantau/byteball-genesis#readme"
+}

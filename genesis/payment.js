@@ -1,23 +1,23 @@
 /*jslint node: true */
 "use strict";
 const fs = require('fs');
-var headlessWallet = require('headless-byteball/start.js');
-var eventBus = require('byteballcore/event_bus.js');
+const headlessWallet = require('headless-byteball/start.js');
+const eventBus = require('byteballcore/event_bus.js');
 
 const configPath = "../wallets/";
 const payingConfigFile = configPath+"paying-config.json";
 const payeeConfigFile = configPath+"payee-config.json";
-var paying_address;
-var payee_address;
+let paying_address;
+let payee_address;
 
 function onError(err){
 	throw Error(err);
 }
 
 function loadWalletConfig(onDone) {
-	var data = fs.readFileSync(payingConfigFile, 'utf8');
-	var wallet = JSON.parse(data);
-	paying_address = wallet['address'];
+	let data = fs.readFileSync(payingConfigFile, 'utf8');
+	let wallet = JSON.parse(data);
+    paying_address = wallet['address'];
 
 	data = fs.readFileSync(payeeConfigFile, 'utf8');
 	wallet = JSON.parse(data);
@@ -27,9 +27,9 @@ function loadWalletConfig(onDone) {
 }
 
 function createPayment() {
-	var composer = require('byteballcore/composer.js');
-	var network = require('byteballcore/network.js');
-	var callbacks = composer.getSavingCallbacks({
+	let composer = require('byteballcore/composer.js');
+	let network = require('byteballcore/network.js');
+	let callbacks = composer.getSavingCallbacks({
 		ifNotEnoughFunds: onError,
 		ifError: onError,
 		ifOk: function(objJoint){
@@ -37,7 +37,7 @@ function createPayment() {
 		}
 	});
 
-	var arrOutputs = [
+	let arrOutputs = [
 		{address: paying_address, amount: 0},      // the change
 		{address: payee_address, amount: 100}  // the receiver
 	];

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 SYSTEM=`uname -s`
 if [ $SYSTEM = "Darwin" ] ; then
@@ -9,6 +9,8 @@ else
     echo "Unsupported system"
     exit -1
 fi
+
+cd `dirname $0`
 
 pm2 delete all
 
@@ -22,20 +24,20 @@ echo "copy wallet to appdir"
 cp -a ../wallets/wallet* "$APPDIR"
 
 echo "update config file"
-cp -f ../conf/hub-conf.js ../src/byteball-hub/conf.js
-cp -f ../conf/witness-conf.js ../src/byteball-witness/conf.js
-cp -f ../conf/explorer-conf.js ../src/byteball-explorer/conf.js
+cp -f ../config/hub-conf.js ../src/byteball-hub/conf.js
+cp -f ../config/witness-conf.js ../src/byteball-witness/conf.js
+cp -f ../config/explorer-conf.js ../src/byteball-explorer/conf.js
 
 echo "update start script"
-cp -f ../conf/witness-headless-start.js ../src/byteball-witness/node_modules/headless-byteball/start.js
-cp -f ../conf/witness-start.js ../src/byteball-witness/start.js
+cp -f ../config/witness-headless-start.js ../src/byteball-witness/node_modules/headless-byteball/start.js
+cp -f ../config/witness-start.js ../src/byteball-witness/start.js
 
 echo "update constants"
-cp -f ../conf/constants.js ../src/byteball-witness/node_modules/byteballcore/constants.js
-cp -f ../conf/constants.js ../src/byteball-hub/node_modules/byteballcore/constants.js
-cp -f ../conf/constants.js ../src/byteball-explorer/node_modules/byteballcore/constants.js
+cp -f ../config/constants.js ../src/byteball-witness/node_modules/byteballcore/constants.js
+cp -f ../config/constants.js ../src/byteball-hub/node_modules/byteballcore/constants.js
+cp -f ../config/constants.js ../src/byteball-explorer/node_modules/byteballcore/constants.js
 
-cp -f ../conf/constants.js ../genesis/node_modules/byteballcore/constants.js
+cp -f ../config/constants.js ../genesis/node_modules/byteballcore/constants.js
 
 for i in {1..12}
 do

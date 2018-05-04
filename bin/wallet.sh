@@ -12,11 +12,5 @@ fi
 
 cd `dirname $0`
 
-pm2 delete all
-
-echo "clean up old data"
-rm -rf ../nodes/*
-rm -rf ../wallets/*
-rm -rf "$APPDIR"/wallet*
-rm -rf "$APPDIR"/byteball-explorer
-rm -rf "$APPDIR"/byteball-hub
+echo "copy wallet to appdir"
+cp -a ../wallets/wallet-paying "$APPDIR"
