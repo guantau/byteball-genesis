@@ -1,4 +1,4 @@
-此文档用于重新部署一套Byteball网络，包括生成配置文件、创建创世单元、开启Hub、Witness以及Explorer节点。相关代码已在Ubuntu及MacOS上测试通过。
+此文档用于部署一套ByteBall网络，包括生成配置文件、创建创世单元、开启Witness、Hub以及Explorer节点。相关代码已在Ubuntu及MacOS上测试通过。
 
 主要步骤如下：
 
@@ -44,7 +44,7 @@ $ cd genesis
 $ npm install
 ```
 
-在目录`src`中下载`byteball`的`explorer`、`hub`及`witness`代码：
+在目录`src`中下载`byteball-witness`、`byteball-explorer`及`byteball-hub`代码：
 
 ```bash
 $ cd src/
@@ -64,7 +64,7 @@ $ npm run init
 
 生成的配置文件位于目录`wallets`中，目录结构为：
 
-![](http://oc7urqs4c.bkt.clouddn.com/2018-04-01-byteball-genesis-wallets.png)
+![](http://oc7urqs4c.bkt.clouddn.com/2018-09-16-byteball_wallets.png)
 
 打印`witness`地址：
 
@@ -72,23 +72,23 @@ $ npm run init
 $ cat witness-address.json
 ```
 
-修改`conf`目录下的`explorer-conf.js`和`hub-conf.js`，将上述地址填入`exports.initial_witnesses`。
+修改`config`目录下的`explorer-conf.js`和`hub-conf.js`，将上述地址填入`exports.initial_witnesses`。
 
 ## 创建创世单元
 
 ```bash
-$ npm run genesis
+$ npm run create_bytes
 ```
 
-运行后将会输出`Genesis unit: `及相应的创世单元hash值，然后终止运行。修改`conf`目录下的`constants.js`，将创世单元hash值填入`exports.GENESIS_UNIT`。
+运行后将会输出`Genesis unit: `及相应的创世单元hash值，然后终止运行。修改`config`目录下的`constants.js`，将创世单元hash值填入`exports.GENESIS_UNIT`。
 
-## 创建BlackBytes
+## 创建隐私资产
 
 ```bash
-$ npm run blackbytes
+$ npm run create_blackbytes
 ```
 
-运行后将输出`Blackbytes asset created:`及相应hash值，终止运行。修改`conf`目录下的`constants.js`，将单元hash值填入`exports.BLACKBYTES_ASSET`。
+运行后将输出`blackbytes asset created:`及相应hash值，终止运行。修改`config`目录下的`constants.js`，将单元hash值填入`exports.BLACKBYTES_ASSET`。
 
 ## 部署相关节点
 
@@ -115,25 +115,32 @@ $ pm2 logs hub
 ## 发布创世单元
 
 ```bash
-$ npm run genesis
+$ npm run create_bytes
 ```
 
 运行成功后，可以在`http://127.0.0.1:4000/`上查看创世单元。
 
-## 发布BlackBytes
+## 发布隐私资产
 
 ```bash
-$ npm run blackbytes
+$ npm run create_blackbytes
 ```
 
-运行成功后，可以在`http://127.0.0.1:4000/`上查看BlackBytes单元。
+运行成功后，可以在`http://127.0.0.1:4000/`上查看隐私资产单元。
 
 
 ## 开启支付测试
 
 ```bash
-$ npm run payment
+$ npm run pay_bytes
 ```
 
 开启支付测试，每30s发起一次支付（**注意：需要等待第1个单元到达稳定后开启**）。
 
+## 支付隐私资产
+
+```bash
+$ npm run pay_blackbytes
+```
+
+注意需要有足够的`header_commission`和`witnessing`才可以开启支付。

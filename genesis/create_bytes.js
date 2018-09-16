@@ -19,18 +19,14 @@ const witness_budget_count = 8;
 
 const witnessConfigFile = configPath+"witness-config.json";
 const genesisConfigFile = configPath+"genesis-config.json";
-const payingConfigFile = configPath+"paying-config.json";
-const payeeConfigFile = configPath+"payee-config.json";
 
 let witnesses = [];
 let genesis_address;
-let paying_address;
-let payee_address;
 
 let walletConfigData = {};
 let arrOutputs = [];
 
-const creation_message = "In blockchain we trust";
+const creation_message = "In byteball we trust";
 
 
 function onError(err) {
@@ -47,24 +43,6 @@ function loadWalletConfig(onDone) {
     genesis_address = wallet['address'];
     walletConfigData[wallet['address']] = wallet;
     arrOutputs.push({ address: genesis_address, amount: 0 });
-
-    // Read paying config file
-    data = fs.readFileSync(payingConfigFile, 'utf8');
-    wallet = JSON.parse(data);
-    paying_address = wallet['address'];
-    walletConfigData[wallet['address']] = wallet;
-    for(let i = 0; i < witness_budget_count; ++i) {
-        arrOutputs.push({ address: wallet['address'], amount: witness_budget });
-    }
-
-    // Read payee config file
-    data = fs.readFileSync(payeeConfigFile, 'utf8');
-    wallet = JSON.parse(data);
-    payee_address = wallet['address'];
-    walletConfigData[wallet['address']] = wallet;
-    for(let i = 0; i < witness_budget_count; ++i) {
-        arrOutputs.push({ address: wallet['address'], amount: witness_budget });
-    }
 
     // Read witness config file
     data = fs.readFileSync(witnessConfigFile, 'utf8');    

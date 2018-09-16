@@ -9,6 +9,7 @@ var headlessWallet = require('headless-byteball');
 var desktopApp = require('byteballcore/desktop_app.js');
 var objectHash = require('byteballcore/object_hash.js');
 
+const MIN_INTERVAL = conf.MIN_INTERVAL || 60*1000;
 var WITNESSING_COST = 600; // size of typical witnessing unit
 var my_address;
 var bWitnessingUnderWay = false;
@@ -95,12 +96,19 @@ function checkAndWitness(){
 		storage.readLastMainChainIndex(function(max_mci){
 			let col = (conf.storage === 'mysql') ? 'main_chain_index' : 'unit_authors.rowid';
 			db.query(
-				"SELECT main_chain_index AS max_my_mci FROM units JOIN unit_authors USING(unit) WHERE +address=? ORDER BY "+col+" DESC LIMIT 1", 
+				"SELECT main_chain_index AS max_my_mci, "+db.getUnixTimestamp('creation_date')+" AS last_ts \n\
+				FROM units JOIN unit_authors USING(unit) WHERE +address=? ORDER BY "+col+" DESC LIMIT 1", 
 				[my_address], 
 				function(rows){
 					var max_my_mci = (rows.length > 0) ? rows[0].max_my_mci : -1000;
 					var distance = max_mci - max_my_mci;
-					console.log("distance="+distance);
+					let last_ts = (rows.length > 0) ? rows[0].last_ts : 0;
+					let interval = Date.now() - last_ts*1000;
+					console.log("distance="+distance+", interval="+(interval/1000)+"s");
+					if (interval < MIN_INTERVAL){
+						bWitnessingUnderWay = false;
+						return console.log("witnessed recently, skipping");
+					}
 					if (distance > conf.THRESHOLD_DISTANCE){
 						// console.log('distance above threshold, will witness');
 						// setTimeout(function(){
@@ -191,6 +199,7 @@ function witnessBeforeThreshold(){
 }
 
 function readNumberOfWitnessingsAvailable(handleNumber){
+	return handleNumber(2*conf.MIN_AVAILABLE_WITNESSINGS);
 	count_witnessings_available--;
 	if (count_witnessings_available > conf.MIN_AVAILABLE_WITNESSINGS)
 		return handleNumber(count_witnessings_available);

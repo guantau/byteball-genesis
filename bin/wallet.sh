@@ -13,4 +13,4 @@ fi
 cd `dirname $0`
 
 echo "copy wallet to appdir"
-cp -a ../wallets/wallet-paying "$APPDIR"
+cp -a ../wallets/wallet-genesis "$APPDIR"

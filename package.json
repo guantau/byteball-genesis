@@ -9,9 +9,10 @@
   "devDependencies": {},
   "scripts": {
     "init": "npm --prefix genesis run init",
-    "genesis": "bin/wallet.sh; npm --prefix genesis run genesis",
-    "blackbytes": "bin/constant.sh; npm --prefix genesis run blackbytes",
-    "payment": "npm --prefix genesis run payment",
+    "create_bytes": "bin/wallet.sh; npm --prefix genesis run create_bytes",
+    "create_blackbytes": "bin/constant.sh; npm --prefix genesis run create_blackbytes",
+    "pay_bytes": "npm --prefix genesis run pay_bytes",
+    "pay_blackbytes": "npm --prefix genesis run pay_blackbytes",
     "deploy": "bin/deploy.sh",
     "start": "bin/start.sh",
     "clean": "bin/clean.sh",

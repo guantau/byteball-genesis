@@ -277,13 +277,7 @@ setTimeout(function(){
 				setTimeout(replaceConsoleLog, 1000);
 				if (conf.MAX_UNSPENT_OUTPUTS && conf.CONSOLIDATION_INTERVAL){
 					var consolidation = require('./consolidation.js');
-					var network = require('byteballcore/network.js');
-					function consolidate(){
-						if (!network.isCatchingUp())
-							consolidation.consolidate(wallet_id, signer);
-					}
-					setInterval(consolidate, conf.CONSOLIDATION_INTERVAL);
-					setTimeout(consolidate, 300*1000);
+					consolidation.scheduleConsolidation(wallet_id, signer, conf.MAX_UNSPENT_OUTPUTS, conf.CONSOLIDATION_INTERVAL);
 				}
 			});
 		});
@@ -461,6 +455,14 @@ function issueChangeAddress(handleAddress){
 		});
 	}
 }
+
+
+function signMessage(signing_address, message, cb) {
+	var device = require('byteballcore/device.js');
+	var Wallet = require('byteballcore/wallet.js');
+	Wallet.signMessage(signing_address, message, [device.getMyDeviceAddress()], signWithLocalPrivateKey, cb);
+}
+
 
 function handleText(from_address, text, onUnknown){
 	

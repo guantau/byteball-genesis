@@ -7,13 +7,11 @@ let Mnemonic = require('bitcore-mnemonic');
 let Bitcore = require('bitcore-lib');
 let objectHash = require('byteballcore/object_hash');
 let constants = require('byteballcore/constants');
+let ecdsa = require('secp256k1');
 
-
-// create 4 types of config files in configPath
+// create 2 types of config files in configPath
 // witness: wallet-witness1~12, witness-config.json
 // genesis: wallet-genesis, genesis-config.json
-// paying:  wallet-paying, paying-config.json
-// payee:   wallet-payee, payee-config.json
 let witnessConfigArray = [];
 let witnessAddressArray = [];
 const configPath = "../wallets/";
@@ -59,12 +57,17 @@ function createWallet() {
 	let arrDefinition = ['sig', {pubkey: pubkey}];
 	let address = objectHash.getChash160(arrDefinition);
 	let wallet = crypto.createHash("sha256").update(strXPubKey, "utf8").digest("base64");
+	
+	let devicePrivKey = xPrivKey.derive("m/1'").privateKey.bn.toBuffer({size:32});
+	let devicePubkey = ecdsa.publicKeyCreate(devicePrivKey, true).toString('base64');
+	let device_address = objectHash.getDeviceAddress(devicePubkey);
 
 	let obj = {};
 	obj['passphrase'] = passphrase;
     obj['mnemonic_phrase'] = mnemonic.phrase;
     obj['temp_priv_key'] = deviceTempPrivKey.toString('base64');
-    obj['prev_temp_priv_key'] = devicePrevTempPrivKey.toString('base64');
+	obj['prev_temp_priv_key'] = devicePrevTempPrivKey.toString('base64');
+	obj['device_address'] = device_address;
 	obj['address'] = address;
 	obj['wallet'] = wallet;
     obj['is_change'] = 0;
@@ -119,15 +122,5 @@ console.log(witnessAddressArray.sort());
 console.log("> Create wallets for genesis...");
 let wallet = createConfig("wallet-genesis", 0);
 fs.writeFile(configPath+"genesis-config.json", JSON.stringify(wallet, null, '\t'), 'utf8', onError);
-
-// create config files for paying address
-console.log("> Create wallets for paying...");
-wallet = createConfig("wallet-paying", 0);
-fs.writeFile(configPath+"paying-config.json", JSON.stringify(wallet, null, '\t'), 'utf8', onError);
-
-// create config files for payee address
-console.log("> Create wallets for payee...");
-wallet = createConfig("wallet-payee", 0);
-fs.writeFile(configPath+"payee-config.json", JSON.stringify(wallet, null, '\t'), 'utf8', onError);
 
 console.log("Done!");

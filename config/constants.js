@@ -10,8 +10,10 @@ exports.COUNT_MC_BALLS_FOR_PAID_WITNESSING = 100;
 exports.version = '1.0';
 exports.alt = '1';
 
-exports.GENESIS_UNIT = 'lyPpvkoHAE+OZ2xpRasRtZRJynPBf7UiltRNpVoNXsI=';
-exports.BLACKBYTES_ASSET = 'F7MfEdMrDRPoWDBSdiCq3JSeeTw2gkyvKaYpkn19lEI=';
+exports.bTestnet = (exports.alt === '2' && exports.version === '1.0t');
+
+exports.GENESIS_UNIT = exports.bTestnet ? 'GgtS6HiNdvW/DcRL1KWE2Z0L/MUVEaK4sj/WqHvlR6Q=' : 'hMEh7pmIOzZhPTvxzIH70p1GPDrXotsdrm8bH8+cgvA=';
+exports.BLACKBYTES_ASSET = exports.bTestnet ? '7WxYBlSIBlHRrkWqFE96QTyXIXTEEujj9h3qG5n/uOo=' : 'YMNMX7cYYdpHlvvrF9kTJd2ZMZGg1ej41qw0rEu6RU4=';
 
 exports.HASH_LENGTH = 44;
 exports.PUBKEY_LENGTH = 44;
@@ -41,3 +43,13 @@ exports.TEXTCOIN_ASSET_CLAIM_FEE = 750;
 exports.TEXTCOIN_ASSET_CLAIM_HEADER_FEE = 391;
 exports.TEXTCOIN_ASSET_CLAIM_MESSAGE_FEE = 209;
 exports.TEXTCOIN_ASSET_CLAIM_BASE_MSG_FEE = 158;
+exports.TEXTCOIN_PRIVATE_ASSET_CLAIM_MESSAGE_FEE = 99;
+
+exports.minCoreVersion = exports.bTestnet ? '0.2.89' : '0.2.92';
+
+exports.witnessedLevelMustNotRetreatUpgradeMci = exports.bTestnet ? 684000 : 1400000;
+exports.spendUnconfirmedUpgradeMci = exports.bTestnet ? 589000 : 2909000;
+exports.branchedMinMcWlUpgradeMci = exports.bTestnet ? 593000 : 2909000;
+exports.otherAddressInDefinitionUpgradeMci = exports.bTestnet ? 602000 : 2909000;
+exports.attestedInDefinitionUpgradeMci = exports.bTestnet ? 616000 : 2909000;
+exports.altBranchByBestParentUpgradeMci = exports.bTestnet ? 642000 : 3009824;

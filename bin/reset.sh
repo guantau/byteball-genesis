@@ -18,8 +18,6 @@ rm "$APPDIR"/byteball-hub/byteball*
 rm "$APPDIR"/byteball-explorer/byteball*
 
 rm "$APPDIR"/wallet-genesis/byteball*
-rm "$APPDIR"/wallet-paying/byteball*
-rm "$APPDIR"/wallet-payee/byteball*
 
 for i in {1..12}
 do
