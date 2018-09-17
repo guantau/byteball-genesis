@@ -39,8 +39,8 @@ $ npm install node-gyp -g
 下载`byteball-genesis`代码：
 
 ```bash
-$ git checkout https://github.com/guantau/byteball-genesis
-$ cd genesis
+$ git clone https://github.com/guantau/byteball-genesis
+$ cd byteball-genesis
 $ npm install
 ```
 
@@ -48,11 +48,11 @@ $ npm install
 
 ```bash
 $ cd src/
-$ git checkout https://github.com/byteball/byteball-explorer
+$ git clone https://github.com/byteball/byteball-explorer
 $ cd byteball-explorer; npm install
-$ git checkout https://github.com/byteball/byteball-hub
+$ git clone https://github.com/byteball/byteball-hub
 $ cd byteball-hub; npm install
-$ git checkout https://github.com/byteball/byteball-witness
+$ git clone https://github.com/byteball/byteball-witness
 $ cd byteball-witness; npm install
 ```
 

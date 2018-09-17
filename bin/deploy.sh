@@ -37,7 +37,7 @@ cp -f ../config/constants.js ../src/byteball-witness/node_modules/byteballcore/c
 cp -f ../config/constants.js ../src/byteball-hub/node_modules/byteballcore/constants.js
 cp -f ../config/constants.js ../src/byteball-explorer/node_modules/byteballcore/constants.js
 
-cp -f ../config/constants.js ../genesis/node_modules/byteballcore/constants.js
+cp -f ../config/constants.js ../node_modules/byteballcore/constants.js
 
 for i in {1..12}
 do
