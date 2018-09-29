@@ -18,7 +18,7 @@
     "secp256k1": "secp256k1/js"
   },
   "dependencies": {
-    "byteballcore": "git+https://github.com/byteball/byteballcore.git",
-    "headless-byteball": "git+https://github.com/byteball/headless-byteball.git"
+    "byteballcore": "git+https://github.com/ly95/byteballcore.git",
+    "headless-byteball": "git+https://github.com/ly95/headless-byteball.git"
   }
 }
