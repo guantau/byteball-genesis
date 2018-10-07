@@ -39,7 +39,7 @@ $ npm install node-gyp -g
 下载`byteball-genesis`代码：
 
 ```bash
-$ git clone https://github.com/guantau/byteball-genesis
+$ git clone https://github.com/ly95/byteball-genesis
 $ cd byteball-genesis
 $ npm install
 ```
@@ -48,11 +48,11 @@ $ npm install
 
 ```bash
 $ cd src/
-$ git clone https://github.com/byteball/byteball-explorer
+$ git clone https://github.com/ly95/byteball-explorer
 $ cd byteball-explorer; npm install
-$ git clone https://github.com/byteball/byteball-hub
+$ git clone https://github.com/ly95/byteball-hub
 $ cd byteball-hub; npm install
-$ git clone https://github.com/byteball/byteball-witness
+$ git clone https://github.com/ly95/byteball-witness
 $ cd byteball-witness; npm install
 ```
 
@@ -69,7 +69,7 @@ $ npm run init
 打印`witness`地址：
 
 ```bash
-$ cat witness-address.json
+$ cat wallets/witness-address.json
 ```
 
 修改`config`目录下的`explorer-conf.js`和`hub-conf.js`，将上述地址填入`exports.initial_witnesses`。
