@@ -1,7 +1,7 @@
 /*jslint node: true */
 "use strict";
 
-exports.COUNT_WITNESSES = 12;
+exports.COUNT_WITNESSES = 1;
 exports.MAX_WITNESS_LIST_MUTATIONS = 1;
 exports.TOTAL_WHITEBYTES = 1e15;
 exports.MAJORITY_OF_WITNESSES = (exports.COUNT_WITNESSES%2===0) ? (exports.COUNT_WITNESSES/2+1) : Math.ceil(exports.COUNT_WITNESSES/2);
@@ -48,7 +48,7 @@ exports.TEXTCOIN_PRIVATE_ASSET_CLAIM_MESSAGE_FEE = 99;
 exports.minCoreVersion = exports.bTestnet ? '0.2.89' : '0.2.92';
 
 exports.witnessedLevelMustNotRetreatUpgradeMci = exports.bTestnet ? 684000 : 1400000;
-exports.spendUnconfirmedUpgradeMci = exports.bTestnet ? 589000 : 2909000;
+exports.spendUnconfirmedUpgradeMci = exports.bTestnet ? 0 : 0;
 exports.branchedMinMcWlUpgradeMci = exports.bTestnet ? 593000 : 2909000;
 exports.otherAddressInDefinitionUpgradeMci = exports.bTestnet ? 602000 : 2909000;
 exports.attestedInDefinitionUpgradeMci = exports.bTestnet ? 616000 : 2909000;
