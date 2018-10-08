@@ -39,7 +39,7 @@ cp -f ../config/constants.js ../src/byteball-explorer/node_modules/byteballcore/
 
 cp -f ../config/constants.js ../node_modules/byteballcore/constants.js
 
-for i in {1..12}
+for i in {1..1}
 do
     echo "deploy witness$i"
     cp -a ../src/byteball-witness/ ../nodes/witness$i
