@@ -7,7 +7,7 @@ const eventBus = require('byteballcore/event_bus.js');
 const configPath = "../wallets/";
 const genesisConfigFile = configPath+"genesis-config.json";
 let genesis_address;
-let receive_address = '4F3VQW2QFFUIC26W57UGJFQD2HPXQVZ6';
+let receive_address = '46YNPZ6SXAEUMOSBA5JYH5KE7TL3DSEW';
 let amount = 10000;
 
 function onError(err){
@@ -43,6 +43,7 @@ function createPayment() {
 eventBus.on('headless_wallet_ready', function() {
 	console.log("> Create payment");
     loadWalletConfig(function() {
-		setInterval(createPayment, 1000*30);
+		//setInterval(createPayment, 1000*30);
+		setTimeout(createPayment, 1000);
 	});
 });

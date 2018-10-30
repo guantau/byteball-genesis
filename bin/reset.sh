@@ -19,7 +19,7 @@ rm "$APPDIR"/byteball-explorer/byteball*
 
 rm "$APPDIR"/wallet-genesis/byteball*
 
-for i in {1..12}
+for i in {1..1}
 do
     rm "$APPDIR"/wallet-witness$i/byteball*
 done

@@ -5,10 +5,11 @@
   "main": "start.js",
   "scripts": {
     "init": "node init.js",
-    "create_bytes": "node --nolazy --inspect-brk=9229 create_bytes.js",
-    "create_blackbytes": "node --nolazy --inspect-brk=9229 create_blackbytes.js",
-    "pay_bytes": "node --nolazy --inspect-brk=9229 pay_bytes.js",
-    "pay_blackbytes": "node --nolazy --inspect-brk=9229 pay_blackbytes.js",
+    "create_bytes": "node create_bytes.js",
+    "create_blackbytes": "node create_blackbytes.js",
+    "pay_bytes": "node pay_bytes.js",
+    "debug_pay_bytes": "node --nolazy --inspect-brk=9229 pay_bytes.js",
+    "pay_blackbytes": "node pay_blackbytes.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "guantau",

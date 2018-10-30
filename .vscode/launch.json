@@ -7,7 +7,13 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "启动程序",
+            "name": "run test.js",
+            "program": "${workspaceFolder}/test.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "pay_bytes",
             "runtimeExecutable": "npm",
             "runtimeArgs": [
                 "run", "pay_bytes"
