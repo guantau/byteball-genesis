@@ -16,10 +16,10 @@ $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh |
 $ nvm -v
 ```
 
-安装NodeJS v8.9.4 LTS版本：
+安装NodeJS v8.12.0 LTS版本：
 
 ```bash
-$ nvm install 8.9.4
+$ nvm install 8.12.0
 ```
 
 安装NodeJS进程管理工具：

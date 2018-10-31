@@ -17,10 +17,10 @@ Check if NVM is installed successfully:
 $ nvm -v
 ```
 
-Install NodeJS v8.9.4 LTS:
+Install NodeJS v8.12.0 LTS:
 
 ```bash
-$ nvm install 8.9.4
+$ nvm install 8.12.0
 ```
 
 Install NodeJS process management tool:
