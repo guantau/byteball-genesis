@@ -12,18 +12,9 @@ exports.storage = 'sqlite';
 
 
 exports.initial_witnesses = [
-	'4F3VQW2QFFUIC26W57UGJFQD2HPXQVZ6',
-	'CTCZS7XUFGFGYMSBPY3PGH2MZQIWY54S',
-	'DKUYRL3UJ7K5G2EIXKS2IFEZPCTKL5DF',
-	'EL7V6LUOQSWXWVBLPLVH4JXE3U5AHMWB',
-	'GP63BT6TKXMRXWXYIOVYHANB2YCP4OWQ',
-	'HV3F5KHMXFHNKDUM7WZVUBJTM34A6OX6',
-	'KIZOZRI3YVW6RWFL2DKGLIKTAYETBV2U',
-	'MLU4RQ3LYIMLRRHIUDN6UWFCK6RHK44A',
-	'TXMCDVHABZ5ZSEZQHH347N26V37AVXTU',
-	'VUKPKYK5ZMHSKBOBPWFRPVPDBYHM7JET',
-	'X2LMM7YEMDMGM3PGPACNR2NTBG2JB3BT',
-	'YVZDP4Y33Y3O3TT4XYNEB2C7RBG5D463'
+  'GRSIXCONO3NVVMR7XX32FBWTDFP25NR3',
+  'LEZ6BFTR26RTOVAC2PWXOZLYUGQ6RSKR',
+  'NTZZHRHWQJX23VYQAIQQDYTQNULOGEO4' 
 ];
 
 /* testnet
@@ -47,5 +38,12 @@ exports.initial_witnesses = [
 exports.initial_peers = [
 	'ws://127.0.0.1:6611'
 ];
+
+exports.selectedLanguage = 'en';
+exports.languagesAvailable = {
+    en: {name: "English", file: "en"},
+    da: {name: "Dansk", file: "explorer_da-DK"},
+    zh: {name: "中文", file: "explorer_zh-CN"}
+};
 
 console.log('finished explorer conf');

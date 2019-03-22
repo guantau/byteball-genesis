@@ -2,5 +2,5 @@
 
 cd `dirname $0`
 echo "update constants"
-cp -f ../config/constants.js ../genesis/node_modules/byteballcore/constants.js
+cp -f ../config/constants.js ../genesis/node_modules/ocore/constants.js
 

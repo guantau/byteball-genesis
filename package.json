@@ -1,14 +1,14 @@
 {
-  "name": "byteball-genesis",
+  "name": "obyte-genesis",
   "version": "1.0.0",
-  "description": "Setup byteball network from scratch",
+  "description": "Setup obyte network from scratch",
   "main": "index.js",
   "dependencies": {
     "wallet-genesis": "file:genesis"
   },
   "devDependencies": {},
   "scripts": {
-    "init": "npm --prefix genesis run init",
+    "init": "bin/init.sh;npm --prefix genesis run init",
     "create_bytes": "bin/wallet.sh; npm --prefix genesis run create_bytes",
     "create_blackbytes": "bin/constant.sh; npm --prefix genesis run create_blackbytes",
     "pay_bytes": "npm --prefix genesis run pay_bytes",

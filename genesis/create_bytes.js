@@ -2,14 +2,14 @@
 "use strict";
 
 const fs = require('fs');
-const db = require('byteballcore/db.js');
-const eventBus = require('byteballcore/event_bus.js');
-const headlessWallet = require('headless-byteball/start.js');
-const constants = require('byteballcore/constants.js');
-const objectHash = require('byteballcore/object_hash.js');
+const db = require('ocore/db.js');
+const eventBus = require('ocore/event_bus.js');
+const headlessWallet = require('headless-obyte/start.js');
+const constants = require('ocore/constants.js');
+const objectHash = require('ocore/object_hash.js');
 const Mnemonic = require('bitcore-mnemonic');
-const ecdsaSig = require('byteballcore/signature.js');
-const validation = require('byteballcore/validation.js');
+const ecdsaSig = require('ocore/signature.js');
+const validation = require('ocore/validation.js');
 
 const configPath = "../wallets/";
 
@@ -101,8 +101,8 @@ let signer = {
 
 
 function createGenesisUnit(onDone) {
-    let composer = require('byteballcore/composer.js');
-    let network = require('byteballcore/network.js');
+    let composer = require('ocore/composer.js');
+    let network = require('ocore/network.js');
 
     let savingCallbacks = composer.getSavingCallbacks({
         ifNotEnoughFunds: onError,
