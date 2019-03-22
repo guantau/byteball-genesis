@@ -40,7 +40,7 @@ $ npm install node-gyp -g
 Download `byteball-genesis` source code:
 
 ```bash
-$ git checkout https://github.com/guantau/byteball-genesis
+$ git clone https://github.com/guantau/byteball-genesis.git
 $ cd genesis
 $ npm install
 ```

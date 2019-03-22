@@ -12,8 +12,8 @@ exports.alt = '1';
 
 exports.bTestnet = (exports.alt === '2' && exports.version === '1.0t');
 
-exports.GENESIS_UNIT = 'VePJ5sbUDB4pgV1ZTKkuhK15erC6u3h8fbCtVZH7PjI=';
-exports.BLACKBYTES_ASSET = 'XcpVC/NprkYJnc/dx0PpRa3UgnrMsDh63w2PtU2JhPY=';
+exports.GENESIS_UNIT = 'tU/SHJ1ekzLB+YfI7+0ygY/4DneMJL71alJSHe5FqHM=';
+exports.BLACKBYTES_ASSET = '4j6s5iCZYzuOgsyIwQQAB/gLpB1hB+dbjEVtZC1piuc=';
 
 exports.HASH_LENGTH = 44;
 exports.PUBKEY_LENGTH = 44;

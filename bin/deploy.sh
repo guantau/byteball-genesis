@@ -44,9 +44,9 @@ do
     echo "deploy witness$i"
     cp -a ../src/obyte-witness/ ../nodes/witness$i
     if [ $SYSTEM = "Darwin" ] ; then
-        sed -i "" "s/byteball-witness/wallet-witness$i/g" ../nodes/witness$i/package.json  
+        sed -i "" "s/obyte-witness/wallet-witness$i/g" ../nodes/witness$i/package.json  
     else
-        sed -i "s/byteball-witness/wallet-witness$i/g" ../nodes/witness$i/package.json  
+        sed -i "s/obyte-witness/wallet-witness$i/g" ../nodes/witness$i/package.json  
     fi
 done
 

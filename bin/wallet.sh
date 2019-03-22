@@ -14,3 +14,7 @@ cd `dirname $0`
 
 echo "copy wallet to appdir"
 cp -a ../wallets/wallet-genesis "$APPDIR"
+
+# remove duplicate ocore module
+rm -rf ../genesis/node_modules/headless-obyte/node_modules/ocore
+
