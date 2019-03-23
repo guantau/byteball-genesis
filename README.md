@@ -8,7 +8,7 @@ The main steps are as follow:
 Install NodeJS version control tool NVM:
 
 ```bash
-$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 ```
 
 Check if NVM is installed successfully:
@@ -17,10 +17,10 @@ Check if NVM is installed successfully:
 $ nvm -v
 ```
 
-Install NodeJS v8.9.4 LTS:
+Install NodeJS v8.15.1 LTS:
 
 ```bash
-$ nvm install 8.9.4
+$ nvm install 8.15.1
 ```
 
 Install NodeJS process management tool:
@@ -40,22 +40,14 @@ $ npm install node-gyp -g
 Download `byteball-genesis` source code:
 
 ```bash
-$ git checkout https://github.com/guantau/byteball-genesis
+$ git clone https://github.com/guantau/byteball-genesis.git
 $ cd genesis
 $ npm install
 ```
 
-Change to the directory `src`, and download `byteball-witness`, `byteball-explorer` and `byteball-hub`:
+## Configure number of witnesses (optional)
 
-```bash
-$ cd src/
-$ git checkout https://github.com/byteball/byteball-explorer
-$ cd byteball-explorer; npm install
-$ git checkout https://github.com/byteball/byteball-hub
-$ cd byteball-hub; npm install
-$ git checkout https://github.com/byteball/byteball-witness
-$ cd byteball-witness; npm install
-```
+Modify file `constanst.js` and set `exports.COUNT_WITNESSES` variable. Suggested number for obyte network is equal to 12.
 
 ## Generate config files
 

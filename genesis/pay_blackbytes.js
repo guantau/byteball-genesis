@@ -1,9 +1,9 @@
 /*jslint node: true */
 "use strict";
 const fs = require('fs');
-const eventBus = require('byteballcore/event_bus.js');
-const headlessWallet = require('headless-byteball/start.js');
-const constants = require('byteballcore/constants.js');
+const eventBus = require('ocore/event_bus.js');
+const headlessWallet = require('headless-obyte/start.js');
+const constants = require('ocore/constants.js');
 
 
 const configPath = "../wallets/";
@@ -31,9 +31,9 @@ function loadWalletConfig(onDone) {
 
 
 function createBlackBytesPayment(){
-	var network = require('byteballcore/network.js');
-	var indivisibleAsset = require('byteballcore/indivisible_asset.js');
-	var walletGeneral = require('byteballcore/wallet_general.js');
+	var network = require('ocore/network.js');
+	var indivisibleAsset = require('ocore/indivisible_asset.js');
+	var walletGeneral = require('ocore/wallet_general.js');
 	
 	indivisibleAsset.composeAndSaveIndivisibleAssetPaymentJoint({
 		asset: constants.BLACKBYTES_ASSET, 

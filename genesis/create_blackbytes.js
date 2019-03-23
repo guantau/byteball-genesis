@@ -1,8 +1,8 @@
 /*jslint node: true */
 "use strict";
 const fs = require('fs');
-const eventBus = require('byteballcore/event_bus.js');
-const headlessWallet = require('headless-byteball/start.js');
+const eventBus = require('ocore/event_bus.js');
+const headlessWallet = require('headless-obyte/start.js');
 
 const configPath = "../wallets/";
 const genesisConfigFile = configPath+"genesis-config.json";
@@ -26,8 +26,8 @@ function loadWalletConfig(onDone) {
 
 
 function createBlackBytes(onDone){
-	let composer = require('byteballcore/composer.js');
-	let network = require('byteballcore/network.js');
+	let composer = require('ocore/composer.js');
+	let network = require('ocore/network.js');
 
 	let callbacks = composer.getSavingCallbacks({
 		ifNotEnoughFunds: onError,

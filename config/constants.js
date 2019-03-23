@@ -1,7 +1,7 @@
 /*jslint node: true */
 "use strict";
 
-exports.COUNT_WITNESSES = 12;
+exports.COUNT_WITNESSES = 3;
 exports.MAX_WITNESS_LIST_MUTATIONS = 1;
 exports.TOTAL_WHITEBYTES = 1e15;
 exports.MAJORITY_OF_WITNESSES = (exports.COUNT_WITNESSES%2===0) ? (exports.COUNT_WITNESSES/2+1) : Math.ceil(exports.COUNT_WITNESSES/2);
@@ -12,8 +12,8 @@ exports.alt = '1';
 
 exports.bTestnet = (exports.alt === '2' && exports.version === '1.0t');
 
-exports.GENESIS_UNIT = exports.bTestnet ? 'GgtS6HiNdvW/DcRL1KWE2Z0L/MUVEaK4sj/WqHvlR6Q=' : 'hMEh7pmIOzZhPTvxzIH70p1GPDrXotsdrm8bH8+cgvA=';
-exports.BLACKBYTES_ASSET = exports.bTestnet ? '7WxYBlSIBlHRrkWqFE96QTyXIXTEEujj9h3qG5n/uOo=' : 'YMNMX7cYYdpHlvvrF9kTJd2ZMZGg1ej41qw0rEu6RU4=';
+exports.GENESIS_UNIT = 'tU/SHJ1ekzLB+YfI7+0ygY/4DneMJL71alJSHe5FqHM=';
+exports.BLACKBYTES_ASSET = '4j6s5iCZYzuOgsyIwQQAB/gLpB1hB+dbjEVtZC1piuc=';
 
 exports.HASH_LENGTH = 44;
 exports.PUBKEY_LENGTH = 44;

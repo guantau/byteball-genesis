@@ -17,41 +17,41 @@ pm2 delete all
 echo "clean up old data"
 rm -rf ../nodes/*
 rm -rf "$APPDIR"/wallet*
-rm -rf "$APPDIR"/byteball-explorer
-rm -rf "$APPDIR"/byteball-hub
+rm -rf "$APPDIR"/obyte-explorer
+rm -rf "$APPDIR"/obyte-hub
 
 echo "copy wallet to appdir"
 cp -a ../wallets/wallet* "$APPDIR"
 
 echo "update config file"
-cp -f ../config/hub-conf.js ../src/byteball-hub/conf.js
-cp -f ../config/witness-conf.js ../src/byteball-witness/conf.js
-cp -f ../config/explorer-conf.js ../src/byteball-explorer/conf.js
+cp -f ../config/hub-conf.js ../src/obyte-hub/conf.js
+cp -f ../config/witness-conf.js ../src/obyte-witness/conf.js
+cp -f ../config/explorer-conf.js ../src/obyte-explorer/conf.js
 
 echo "update start script"
-cp -f ../config/witness-headless-start.js ../src/byteball-witness/node_modules/headless-byteball/start.js
-cp -f ../config/witness-start.js ../src/byteball-witness/start.js
+cp -f ../config/witness-headless-start.js ../src/obyte-witness/node_modules/headless-obyte/start.js
+cp -f ../config/witness-start.js ../src/obyte-witness/start.js
 
 echo "update constants"
-cp -f ../config/constants.js ../src/byteball-witness/node_modules/byteballcore/constants.js
-cp -f ../config/constants.js ../src/byteball-hub/node_modules/byteballcore/constants.js
-cp -f ../config/constants.js ../src/byteball-explorer/node_modules/byteballcore/constants.js
+cp -f ../config/constants.js ../src/obyte-witness/node_modules/ocore/constants.js
+cp -f ../config/constants.js ../src/obyte-hub/node_modules/ocore/constants.js
+cp -f ../config/constants.js ../src/obyte-explorer/node_modules/ocore/constants.js
 
-cp -f ../config/constants.js ../genesis/node_modules/byteballcore/constants.js
+cp -f ../config/constants.js ../genesis/node_modules/ocore/constants.js
 
-for i in {1..12}
+for i in {1..3}
 do
     echo "deploy witness$i"
-    cp -a ../src/byteball-witness/ ../nodes/witness$i
+    cp -a ../src/obyte-witness/ ../nodes/witness$i
     if [ $SYSTEM = "Darwin" ] ; then
-        sed -i "" "s/byteball-witness/wallet-witness$i/g" ../nodes/witness$i/package.json  
+        sed -i "" "s/obyte-witness/wallet-witness$i/g" ../nodes/witness$i/package.json  
     else
-        sed -i "s/byteball-witness/wallet-witness$i/g" ../nodes/witness$i/package.json  
+        sed -i "s/obyte-witness/wallet-witness$i/g" ../nodes/witness$i/package.json  
     fi
 done
 
-cp -a ../src/byteball-explorer/ ../nodes/explorer
-cp -a ../src/byteball-hub/ ../nodes/hub
+cp -a ../src/obyte-explorer/ ../nodes/explorer
+cp -a ../src/obyte-hub/ ../nodes/hub
 
 echo deploy finshed
 

@@ -18,5 +18,5 @@ echo "clean up old data"
 rm -rf ../nodes/*
 rm -rf ../wallets/*
 rm -rf "$APPDIR"/wallet*
-rm -rf "$APPDIR"/byteball-explorer
-rm -rf "$APPDIR"/byteball-hub
+rm -rf "$APPDIR"/obyte-explorer
+rm -rf "$APPDIR"/obyte-hub
