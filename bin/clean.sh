@@ -20,3 +20,5 @@ rm -rf ../wallets/*
 rm -rf "$APPDIR"/wallet*
 rm -rf "$APPDIR"/obyte-explorer
 rm -rf "$APPDIR"/obyte-hub
+
+echo "clean-up done"
