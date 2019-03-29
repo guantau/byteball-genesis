@@ -7,8 +7,8 @@ const eventBus = require('ocore/event_bus.js');
 const configPath = "../wallets/";
 const genesisConfigFile = configPath+"genesis-config.json";
 let genesis_address;
-let receive_address = '4F3VQW2QFFUIC26W57UGJFQD2HPXQVZ6';
-let amount = 10000;
+let receive_address = '635NNZCKJABPMIT6CLWMTLV3VSOFX52V';
+let amount = 1;
 
 function onError(err){
 	throw Error(err);
@@ -40,9 +40,10 @@ function createPayment() {
 	composer.composePaymentJoint([genesis_address], arrOutputs, headlessWallet.signer, callbacks);
 }
 
+/* Send only one request, cause next are not accepted unless MC is stable ~7-10 min */
 eventBus.on('headless_wallet_ready', function() {
 	console.log("> Create payment");
     loadWalletConfig(function() {
-		setInterval(createPayment, 1000*30);
+		createPayment();
 	});
 });

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 SYSTEM=`uname -s`
-if [ $SYSTEM = "Darwin" ] ; then
+if [[ ${SYSTEM} = "Darwin" ]] ; then
     APPDIR="$HOME/Library/Application Support"
-elif [ $SYSTEM = "Linux" ] ; then
+elif [[ ${SYSTEM} = "Linux" ]] ; then
     APPDIR="$HOME/.config"
 else
     echo "Unsupported system"
@@ -28,10 +28,6 @@ cp -f ../config/hub-conf.js ../src/obyte-hub/conf.js
 cp -f ../config/witness-conf.js ../src/obyte-witness/conf.js
 cp -f ../config/explorer-conf.js ../src/obyte-explorer/conf.js
 
-echo "update start script"
-cp -f ../config/witness-headless-start.js ../src/obyte-witness/node_modules/headless-obyte/start.js
-cp -f ../config/witness-start.js ../src/obyte-witness/start.js
-
 echo "update constants"
 cp -f ../config/constants.js ../src/obyte-witness/node_modules/ocore/constants.js
 cp -f ../config/constants.js ../src/obyte-hub/node_modules/ocore/constants.js
@@ -42,11 +38,12 @@ cp -f ../config/constants.js ../genesis/node_modules/ocore/constants.js
 for i in {1..3}
 do
     echo "deploy witness$i"
-    cp -a ../src/obyte-witness/ ../nodes/witness$i
-    if [ $SYSTEM = "Darwin" ] ; then
-        sed -i "" "s/obyte-witness/wallet-witness$i/g" ../nodes/witness$i/package.json  
+    cp -a ../src/obyte-witness/ ../nodes/witness${i}
+    cp ../genesis/start.sh ../nodes/witness${i}
+    if [[ ${SYSTEM} = "Darwin" ]] ; then
+        sed -i "" "s/obyte-witness/wallet-witness$i/g" ../nodes/witness${i}/package.json
     else
-        sed -i "s/obyte-witness/wallet-witness$i/g" ../nodes/witness$i/package.json  
+        sed -i "s/obyte-witness/wallet-witness$i/g" ../nodes/witness${i}/package.json
     fi
 done
 
